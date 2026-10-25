@@ -79,6 +79,12 @@ Host devops
     User devops
     IdentityFile ~/.ssh/devops_vm
     IdentitiesOnly yes
+
+Host devops.local
+    Port 2222
+    User devops
+    IdentityFile ~/.ssh/devops_vm
+    IdentitiesOnly yes
 ```
 
 `Port 2222` здесь — порт хоста, поэтому файл не меняется при смене порта гостя в разделе 5.
@@ -176,7 +182,7 @@ sudo ufw status verbose
 ```powershell
 ipconfig /flushdns
 ping devops.local
-ssh -p 2222 devops@devops.local
+ssh devops.local                # через Host-only напрямую, ключ из ~/.ssh/config
 ```
 
 На сервере:
